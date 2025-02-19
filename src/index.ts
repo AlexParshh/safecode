@@ -18,7 +18,6 @@ app.use(morgan('dev'));
 
 // Create temporary files for code and scope
 // Uses a random string for the temporary directory so that multiple requests can be processed concurrently
-// (But this is flask which only supports one request at a time, but in theory it would work with fastapi etc)
 async function createTempFiles(code: string, scope: Record<string, any>): Promise<string> {
   const tempDir = join(tmpdir(), `safe-eval-${randomBytes(8).toString('hex')}`);
   
